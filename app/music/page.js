@@ -19,20 +19,23 @@ export default function Music() {
   const [hasMore, setHasMore] = useState(true);
 
   const fetchArticles = () => {
+    // setTimeout을 이용해 비동기 흉내 (서버 요청처럼)
     setTimeout(() => {
-      setArticles((prev) => {
-        const currentLength = prev.length;
-        const nextArticles = Array.from({ length: 10 }, (_, idx) => ({
-          id: currentLength + idx + 1,
-          title: `Music 최신 기사 제목 ${currentLength + idx + 1}`,
+      setArticles((prevArticles) => {
+        const nextPage = Math.floor(prevArticles.length / 10) + 1;
+  
+        // 새로운 더미 데이터 생성
+        const newArticles = Array.from({ length: 10 }, (_, idx) => ({
+          id: (nextPage - 1) * 10 + idx + 1,
+          title: `Music 최신 기사 제목 ${(nextPage - 1) * 10 + idx + 1}`,
         }));
-
-        // 50개(10개씩 5번 로드)로 제한
-        if (currentLength + nextArticles.length >= 50) {
+  
+        // 총 50개(5페이지)까지 제한
+        if (prevArticles.length + newArticles.length >= 50) {
           setHasMore(false);
         }
-
-        return [...prev, ...nextArticles];
+  
+        return [...prevArticles, ...newArticles];
       });
     }, 1000);
   };
