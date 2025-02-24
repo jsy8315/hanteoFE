@@ -1,15 +1,9 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import Link from "next/link";
+import NavbarTab from "@/component/Tab/NavbarTab";
+import Banner from "@/component/Banner/Banner";
+import { headers } from 'next/headers';
 
 export const metadata = {
   title: "Create Next App",
@@ -17,9 +11,23 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
+      <body>
+        <header className="navbar">
+          <div className="navbar-logo">
+            <Link href="/">HANTEO DEMO</Link>
+          </div>
+          <div className="navbar-tab">
+            <NavbarTab/>
+          </div>
+        </header>
+        <div className="navbar-placeholder" />
+
+        <div className="banner-wrapper">
+          <Banner />
+        </div>
         {children}
       </body>
     </html>

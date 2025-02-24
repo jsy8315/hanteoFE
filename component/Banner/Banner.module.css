@@ -1,0 +1,38 @@
+.banner {
+    width: 100%;        
+    max-width: 1024px;
+    margin: 10px auto;
+    position: relative;
+  }
+  
+  .banner-element {
+    width: 100%;
+    overflow: hidden;
+    border-radius: 8px;
+  }
+  
+  .image-container {
+    width: 100%;
+    height: auto;
+  }
+  
+  .image-container img {
+    object-fit: cover;
+    display: block;
+  }
+  
+  .swiper-button-prev,
+  .swiper-button-next {
+    color: white;
+    opacity: 0.7;
+  }
+  
+  .swiper-button-prev:hover,
+  .swiper-button-next:hover {
+    opacity: 1;
+  }
+  
+  .swiper-pagination-bullet-active {
+    background-color: lightpink !important;
+  }
+  

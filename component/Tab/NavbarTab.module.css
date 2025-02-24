@@ -1,0 +1,30 @@
+
+  
+.tabGroup {
+    width: 1024px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  
+  .tabElement {
+    font-size: 20px;
+    cursor: pointer;
+    padding: 5px 10px;
+    transition: color 0.2s ease;
+  }
+  
+  .tabElement:hover {
+    color: lightpink;
+    transform: scale(1.1);
+  }
+
+  .active {
+    color: lightpink;;
+    font-weight: bold;
+    border-bottom: 2px solid lightpink ;
+  }
+  
