@@ -16,27 +16,29 @@ export default function Music() {
   };
 
   const [articles, setArticles] = useState([]);
-  const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(true);
 
-  // 더미 데이터 생성 함수 (백단 서버 가정)
   const fetchArticles = () => {
     setTimeout(() => {
-      const newArticles = Array.from({ length: 10 }, (_, idx) => ({
-        id: (page - 1) * 10 + idx + 1,
-        title: `Music 최신 기사 제목 ${(page - 1) * 10 + idx + 1}`,
-      }));
+      setArticles((prev) => {
+        const currentLength = prev.length;
+        const nextArticles = Array.from({ length: 10 }, (_, idx) => ({
+          id: currentLength + idx + 1,
+          title: `Music 최신 기사 제목 ${currentLength + idx + 1}`,
+        }));
 
-      setArticles((prev) => [...prev, ...newArticles]);
+        // 50개(10개씩 5번 로드)로 제한
+        if (currentLength + nextArticles.length >= 50) {
+          setHasMore(false);
+        }
 
-      // 더미 데이터는 50개까지만 생성한다고 가정
-      if (page === 5) setHasMore(false);
-      setPage(page + 1);
-    }, 1000); // 1초 후 데이터 로딩 (API 요청처럼)
+        return [...prev, ...nextArticles];
+      });
+    }, 1000);
   };
 
   useEffect(() => {
-    fetchArticles(); // 최초 페이지 로딩 시 데이터 불러오기
+    fetchArticles(); // 처음 로딩 시 한번 호출
   }, []);
 
   return (
