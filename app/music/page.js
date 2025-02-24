@@ -16,8 +16,10 @@ export default function Music() {
   };
 
   const [articles, setArticles] = useState([]);
+  const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(true);
 
+  // 더미 데이터 생성 함수 (백단 서버 가정)
   const fetchArticles = () => {
     // setTimeout을 이용해 비동기 흉내 (서버 요청처럼)
     setTimeout(() => {
@@ -27,7 +29,7 @@ export default function Music() {
         // 새로운 더미 데이터 생성
         const newArticles = Array.from({ length: 10 }, (_, idx) => ({
           id: (nextPage - 1) * 10 + idx + 1,
-          title: `Music 최신 기사 제목 ${(nextPage - 1) * 10 + idx + 1}`,
+          title: `Chart 최신 기사 제목 ${(nextPage - 1) * 10 + idx + 1}`,
         }));
   
         // 총 50개(5페이지)까지 제한
@@ -39,9 +41,10 @@ export default function Music() {
       });
     }, 1000);
   };
+  
 
   useEffect(() => {
-    fetchArticles(); // 처음 로딩 시 한번 호출
+    fetchArticles(); // 최초 페이지 로딩 시 데이터 불러오기
   }, []);
 
   return (
@@ -52,7 +55,6 @@ export default function Music() {
 
       <div className="page-container">
         <h2 className="page-title">MUSIC</h2>
-
         <InfiniteScroll
           dataLength={articles.length}
           next={fetchArticles}
