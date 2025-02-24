@@ -242,7 +242,6 @@ a {
     width: 100%;
     min-width: 425px; 
     height: auto;
-    background-color: lightgreen;
   }
 }
 
@@ -252,6 +251,5 @@ a {
     width: 100%;
     min-width: 320px; 
     height: 932px;
-    background-color: lightcoral;
   }
 }
