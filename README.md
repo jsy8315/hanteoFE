@@ -36,14 +36,19 @@
 - 모바일 친화적인 페이지 전환을 위해 `react-swipeable`을 활용했습니다.
 
 
-### ✅ Next.js App Router 기반의 깔끔한 라우팅 구성
+### ✅ Next.js App Router 기반의 라우팅 구성
 
 - 탭 메뉴 클릭 시 명확하게 구분된 페이지로 이동합니다.
 - 배너는 홈 화면에서만 노출되도록 조건부 렌더링했습니다.
 
+### ✅ (추가 구현 : PC, 테블릿 반응형 웹)
+
+- 실제 서비스와 가깝게 구현하기 위해, 제시된 모바일 페이지 외에, PC, 태블릿 화면을 반응형 웹으로 구현했습니다. 
+- navbar를 layout 컴포넌트로 따로 구현해 유지보수에 용이하게 해보았습니다.
+
 ---
 
-기본 주소: [http://localhost:3000](http://localhost:3000)
+기본 주소: [https://hanteo-fe-571f.vercel.app/](https://hanteo-fe-571f.vercel.app/)
 
 ---
 
